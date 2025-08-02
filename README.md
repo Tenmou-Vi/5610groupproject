@@ -4,9 +4,13 @@ A collaborative platform designed for indie game development teams to manage ass
 
 ## 🌐 Deployment Links
 
-- **Frontend Application**: https://tenmoutheshark.github.io/indie-game-hub
+- **Frontend Application**: https://indie-game-hub-2024.uc.r.appspot.com
 - **Backend API**: https://indie-game-hub-backend-346389979835.us-central1.run.app
 - **GitHub Repository**: https://github.com/Tenmou-Vi/5610groupproject
+
+### Alternative Deployment Options
+- **Netlify**: https://stalwart-lily-deb8b0.netlify.app (backup deployment)
+- **GitHub Pages**: https://tenmoutheshark.github.io/indie-game-hub (static deployment)
 
 ## 📸 Application Screenshots
 
@@ -42,8 +46,9 @@ A collaborative platform designed for indie game development teams to manage ass
 - **In-memory Database** - Simplified data storage for deployment stability
 
 ### Deployment & DevOps
-- **Frontend**: GitHub Pages (static deployment)
+- **Frontend**: Google Cloud App Engine (Node.js runtime)
 - **Backend**: Google Cloud Run (containerized deployment)
+- **Alternative Deployments**: Netlify, GitHub Pages
 - **Version Control**: Git + GitHub with tagged releases
 
 ## 📋 Features Implemented (Iteration 1)
@@ -102,16 +107,20 @@ indie-game-hub/
 ├── backend/                 # Node.js + Express backend
 │   ├── server.js           # Main server file with API routes
 │   ├── package.json        # Backend dependencies
-│   ├── Dockerfile          # Container configuration
+│   ├── Dockerfile          # Container configuration for Cloud Run
 │   └── .dockerignore       # Docker ignore rules
 ├── frontend/               # React frontend
 │   ├── src/
 │   │   ├── App.js          # Main application component
 │   │   └── App.css         # Custom styles
 │   ├── package.json        # Frontend dependencies
+│   ├── app.yaml            # App Engine configuration
+│   ├── server.js           # Express server for App Engine
 │   ├── build/              # Production build output
-│   └── public/             # Static assets
+│   └── public/             # Static assets and _redirects
 ├── screenshots/            # Application screenshots
+├── ITERATION_1_SUMMARY.md  # Detailed progress summary
+├── PIAZZA_SUBMISSION.md    # Piazza submission content
 └── README.md               # Project documentation
 ```
 
@@ -151,10 +160,27 @@ gcloud run deploy indie-game-hub-backend \
   --port 8080
 ```
 
-### Frontend Deployment (GitHub Pages)
+### Frontend Deployment (Google Cloud App Engine)
 ```bash
 cd frontend
 npm run build
+gcloud app deploy --quiet
+```
+
+### Alternative Frontend Deployments
+
+#### Netlify (Automatic)
+```bash
+# Connected to GitHub - automatically deploys on push
+# Manual deployment:
+cd frontend
+npm run build
+# Drag build folder to https://app.netlify.com/drop
+```
+
+#### GitHub Pages
+```bash
+cd frontend
 npm run deploy
 ```
 
@@ -305,8 +331,26 @@ The application utilizes multiple Bootstrap components not featured in the demo:
 ### API Response Format
 All API endpoints return JSON responses with consistent structure and appropriate HTTP status codes.
 
+## 🔗 Related Links
+
+- **GitHub Repository**: https://github.com/Tenmou-Vi/5610groupproject
+- **Primary Frontend**: https://indie-game-hub-2024.uc.r.appspot.com
+- **Backend API**: https://indie-game-hub-backend-346389979835.us-central1.run.app
+- **Alternative Deployments**: 
+  - Netlify: https://stalwart-lily-deb8b0.netlify.app
+  - GitHub Pages: https://tenmoutheshark.github.io/indie-game-hub
+
+## 📊 Deployment Status
+
+| Service | Platform | Status | URL |
+|---------|----------|--------|-----|
+| Frontend | Google Cloud App Engine | ✅ Operational | https://indie-game-hub-2024.uc.r.appspot.com |
+| Backend | Google Cloud Run | ✅ Operational | https://indie-game-hub-backend-346389979835.us-central1.run.app |
+| Backup Frontend | Netlify | ✅ Operational | https://stalwart-lily-deb8b0.netlify.app |
+
 ---
 
 **Last Updated**: August 2, 2025  
 **Deployment Status**: ✅ Fully Operational  
-**Developer**: Tianmeng Xia
+**Developer**: Tianmeng Xia  
+**Project**: CS5610 Group Project - Iteration 1
