@@ -1,0 +1,18 @@
+runtime: nodejs20
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 5
+
+handlers:
+- url: /static/(.*)
+  static_files: build/static/\1
+  upload: build/static/(.*)
+
+- url: /(.*\.(json|ico|js|css|txt|svg|png|jpg|jpeg|gif|woff|woff2|map))$
+  static_files: build/\1
+  upload: build/(.*\.(json|ico|js|css|txt|svg|png|jpg|jpeg|gif|woff|woff2|map))$
+
+- url: /.*
+  script: auto
+  secure: always
