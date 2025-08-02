@@ -1,7 +1,7 @@
 #Iter1 - Team: Individual Project (Tianmeng Xia)
 
 ## Project URLs
-**Frontend**: https://tenmoutheshark.github.io/indie-game-hub  
+**Frontend**: https://indie-game-hub-2024.uc.r.appspot.com  
 **Backend**: https://indie-game-hub-backend-346389979835.us-central1.run.app  
 **Github Repo**: https://github.com/Tenmou-Vi/5610groupproject
 
@@ -11,27 +11,25 @@
 
 ### Completed Features
 
-**Project Structure**: Full MERN stack setup with separate frontend and backend directories, containerized deployment
+**Project Structure**: Full MERN stack setup with separate frontend (React) and backend (Express) directories, containerized deployment architecture
 
-**Complete Routing**: 5 UI routes implemented - Dashboard (/), Assets (/assets), Tasks (/tasks), Team (/team), and Versions (/versions) using React Router
+**Complete Routing**: 5 UI routes implemented - Dashboard (/), Assets (/assets), Tasks (/tasks), Team (/team), and Versions (/versions) using React Router DOM
 
-**RESTful API**: 4 working GET endpoints for assets, tasks, users, and versions with JSON responses
+**Database Architecture**: In-memory database with structured data models for assets, tasks, users, and game versions to ensure deployment stability
 
-**Bootstrap UI**: Custom gaming-themed interface using React Bootstrap with Badge, Alert, and Fade components not in demo
+**RESTful API**: 4 working GET endpoints for core entities (Assets, Tasks, Users, Versions) with JSON responses and health monitoring
 
-**Database Architecture**: In-memory database with structured data models for assets, tasks, users, and game versions
+**Dual Deployment**: Frontend deployed to Google Cloud App Engine; backend containerized and deployed to Google Cloud Run with proper CORS configuration
 
-**Team Management**: User status tracking, role management, and activity monitoring system
+**Bootstrap UI Integration**: Custom gaming-themed interface using React Bootstrap with Badge, Alert, and Fade components not featured in demo applications
 
-**Task Board**: Kanban-style task management with status tracking (To Do, In Progress, Completed) and priority levels
+**Team Management System**: User status tracking, role management, and activity monitoring with online/offline indicators
 
-**Asset Library**: Game asset management system with categorization, tagging, and metadata tracking
+**Task Board Implementation**: Kanban-style task management with status tracking (To Do, In Progress, Completed) and priority levels (High, Medium, Low)
 
-**Version Control**: Game version tracking with associated assets and task completion status
+**Asset Library**: Game asset management system with categorization, tagging, file type tracking, and metadata storage
 
-**Deployment**: Frontend deployed to GitHub Pages, backend containerized and deployed to Google Cloud Run
-
-**Real-time Dashboard**: Project overview with statistics, quick navigation, and data refresh functionality
+**Version Control Integration**: Game version tracking with associated assets, task completion status, and release milestone management
 
 ### Issues Resolved
 
