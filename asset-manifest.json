@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/indie-game-hub/static/css/main.9c5ee5c0.css",
+    "main.js": "/indie-game-hub/static/js/main.e8f64c17.js",
+    "static/js/453.670e15c7.chunk.js": "/indie-game-hub/static/js/453.670e15c7.chunk.js",
+    "index.html": "/indie-game-hub/index.html",
+    "main.9c5ee5c0.css.map": "/indie-game-hub/static/css/main.9c5ee5c0.css.map",
+    "main.e8f64c17.js.map": "/indie-game-hub/static/js/main.e8f64c17.js.map",
+    "453.670e15c7.chunk.js.map": "/indie-game-hub/static/js/453.670e15c7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9c5ee5c0.css",
+    "static/js/main.e8f64c17.js"
+  ]
+}
