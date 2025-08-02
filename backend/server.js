@@ -1,5 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const http = require('http');
 const socketIo = require('socket.io');
@@ -19,23 +18,96 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// MongoDB Connection
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/indie-game-hub';
-console.log('Attempting to connect to MongoDB...');
-mongoose.connect(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 5000, // 5 second timeout
-  socketTimeoutMS: 45000, // 45 second timeout
-})
-.then(() => {
-  console.log('MongoDB connected successfully');
-})
-.catch(err => {
-  console.log('MongoDB connection error:', err);
-  console.log('Continuing without database connection...');
-  // Don't exit the process, let it continue without DB for now
-});
+// In-memory database
+const db = {
+  assets: [
+    {
+      id: '1',
+      name: 'Hero Sprite',
+      filename: 'hero_sprite.png',
+      type: 'image',
+      size: 1024,
+      category: 'Character',
+      tags: ['player', 'sprite', '32x32'],
+      description: 'Main character sprite sheet',
+      projectId: 'project1',
+      uploader: 'user1',
+      createdAt: new Date()
+    },
+    {
+      id: '2',
+      name: 'Jump Sound',
+      filename: 'jump_sound.wav',
+      type: 'audio',
+      size: 512,
+      category: 'Audio',
+      tags: ['sound', 'jump', 'effect'],
+      description: 'Character jump sound effect',
+      projectId: 'project1',
+      uploader: 'user1',
+      createdAt: new Date()
+    }
+  ],
+  tasks: [
+    {
+      id: '1',
+      title: 'Design Main Character',
+      description: 'Create the main character sprite sheet',
+      status: 'In Progress',
+      priority: 'High',
+      assignedTo: 'user1',
+      projectId: 'project1',
+      dueDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+      tags: ['design', 'character'],
+      createdAt: new Date()
+    },
+    {
+      id: '2',
+      title: 'Implement Jump Mechanics',
+      description: 'Add jumping functionality to the game',
+      status: 'To Do',
+      priority: 'Medium',
+      assignedTo: 'user2',
+      projectId: 'project1',
+      dueDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
+      tags: ['programming', 'mechanics'],
+      createdAt: new Date()
+    }
+  ],
+  versions: [
+    {
+      id: '1',
+      name: 'Alpha 0.1',
+      description: 'Initial prototype with basic mechanics',
+      versionNumber: '0.1.0',
+      projectId: 'project1',
+      creator: 'user1',
+      createdAt: new Date(),
+      assets: ['1', '2'],
+      tasks: ['1']
+    }
+  ],
+  users: [
+    {
+      id: 'user1',
+      username: 'john_doe',
+      displayName: 'John Doe',
+      email: 'john@example.com',
+      role: 'Developer',
+      online: true,
+      lastSeen: new Date()
+    },
+    {
+      id: 'user2',
+      username: 'jane_smith',
+      displayName: 'Jane Smith',
+      email: 'jane@example.com',
+      role: 'Designer',
+      online: false,
+      lastSeen: new Date(Date.now() - 30 * 60 * 1000)
+    }
+  ]
+};
 
 // Routes
 app.use('/api/assets', require('./routes/assets'));
@@ -74,7 +146,8 @@ app.get('/health', (req, res) => {
   res.status(200).json({ 
     status: 'OK', 
     message: 'Indie Game Hub API is running!',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+    database: 'In-memory'
   });
 });
 
@@ -87,4 +160,8 @@ const PORT = process.env.PORT || 8080;
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Health check available at: http://localhost:${PORT}/health`);
-}); 
+  console.log('Using in-memory database - no external database required!');
+});
+
+// Export db for use in routes
+module.exports = { db }; 
