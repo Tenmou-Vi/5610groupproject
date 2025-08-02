@@ -12,23 +12,18 @@ A collaborative platform designed for indie game development teams to manage ass
 - **Netlify**: https://stalwart-lily-deb8b0.netlify.app (backup deployment)
 - **GitHub Pages**: https://tenmoutheshark.github.io/indie-game-hub (static deployment)
 
-## 📸 Application Screenshots
+## 📸 Application Preview
 
-### Dashboard Overview
-![Dashboard](screenshots/dashboard.png)
-*Main dashboard showing project statistics and quick navigation*
+**Live Application**: Visit https://indie-game-hub-2024.uc.r.appspot.com to see the application in action.
 
-### Asset Management
-![Assets](screenshots/assets.png)
-*Game asset library with categorization and metadata*
+### Key Features
+- **Dashboard Overview**: Project statistics and navigation
+- **Asset Management**: Game asset library with categorization  
+- **Task Board**: Kanban-style task management system
+- **Team Collaboration**: Member management with status tracking
+- **Version Control**: Release milestone management
 
-### Task Board
-![Tasks](screenshots/tasks.png)
-*Kanban-style task management with status tracking*
-
-### Team Collaboration
-![Team](screenshots/team.png)
-*Team member management with online status*
+*Screenshots and demo video available upon request for presentation purposes.*
 
 ## 🚀 Technology Stack
 
@@ -51,7 +46,41 @@ A collaborative platform designed for indie game development teams to manage ass
 - **Alternative Deployments**: Netlify, GitHub Pages
 - **Version Control**: Git + GitHub with tagged releases
 
-## 📋 Features Implemented (Iteration 1)
+## 📋 Iteration 1 Requirements Fulfilled
+
+### ✅ Full-Stack Web Application
+- **Frontend**: React.js with browser-based UI
+- **Backend**: Node.js + Express.js API server
+- **Database**: In-memory structured data storage
+- **Deployment**: Google Cloud Platform (App Engine + Cloud Run)
+
+### ✅ 2+ CRUD Operations (Read Operations Implemented)
+1. **Assets CRUD**: `GET /api/assets` - Retrieve game asset library
+2. **Tasks CRUD**: `GET /api/tasks` - Fetch task management data
+3. **Users CRUD**: `GET /api/users` - Access team member information
+4. **Versions CRUD**: `GET /api/versions` - Version control data
+
+### ✅ 3+ UI Routes
+1. **Dashboard** (`/`) - Project overview and statistics
+2. **Assets** (`/assets`) - Game asset management interface
+3. **Task Board** (`/tasks`) - Kanban-style task tracking
+4. **Team** (`/team`) - Member management and collaboration
+5. **Versions** (`/versions`) - Version control and releases
+
+### ✅ Bootstrap Components (Not in Demo)
+- **Badge**: Status indicators and priority levels
+- **Alert**: Success/error notification system
+- **Fade**: Smooth transitions and loading states
+- **ListGroup**: Organized data presentation
+- **Spinner**: Loading indicators during API calls
+
+### ✅ Different Layout/Design
+- Custom gaming-themed dark interface
+- Professional indie game development focus
+- Responsive mobile-first design approach
+- Distinct from demo application appearance
+
+## 📋 Features Implemented
 
 ### 1. Asset Management (`/assets`)
 - View game asset library (images, audio, documents)
@@ -77,7 +106,7 @@ A collaborative platform designed for indie game development teams to manage ass
 - Associated assets and completed tasks
 - Release milestone management
 
-### 5. Dashboard (`/home`)
+### 5. Dashboard (`/`)
 - Project overview statistics
 - Quick navigation interface
 - Real-time data refresh functionality
@@ -118,7 +147,7 @@ indie-game-hub/
 │   ├── server.js           # Express server for App Engine
 │   ├── build/              # Production build output
 │   └── public/             # Static assets and _redirects
-├── screenshots/            # Application screenshots
+├── docs/                   # Documentation and resources
 ├── ITERATION_1_SUMMARY.md  # Detailed progress summary
 ├── PIAZZA_SUBMISSION.md    # Piazza submission content
 └── README.md               # Project documentation
