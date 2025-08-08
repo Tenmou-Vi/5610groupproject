@@ -17,7 +17,7 @@ const TaskBoard = () => {
     status: 'To Do'
   });
 
-  // 获取所有任务
+  // Fetch all tasks
   const fetchTasks = async () => {
     try {
       setLoading(true);
@@ -26,18 +26,18 @@ const TaskBoard = () => {
       setError(null);
     } catch (err) {
       console.error('Failed to fetch tasks:', err);
-      setError('获取任务失败，请稍后重试');
+      setError('Failed to fetch tasks. Please try again later.');
     } finally {
       setLoading(false);
     }
   };
 
-  // 组件加载时获取任务
+  // Load tasks when component mounts
   useEffect(() => {
     fetchTasks();
   }, []);
 
-  // 按状态分组任务
+  // Group tasks by status
   const groupedTasks = tasks.reduce((acc, task) => {
     const status = task.status || 'To Do';
     if (!acc[status]) {
@@ -91,7 +91,7 @@ const TaskBoard = () => {
   const handleSaveTask = async () => {
     try {
       if (!taskForm.title || !taskForm.description) {
-        setError('标题和描述是必填项');
+        setError('Title and description are required');
         return;
       }
 
@@ -101,31 +101,31 @@ const TaskBoard = () => {
       };
 
       if (selectedTask) {
-        // 更新任务
+        // Update task
         await tasksAPI.update(selectedTask.id, taskData);
       } else {
-        // 创建新任务
+        // Create new task
         await tasksAPI.create(taskData);
       }
 
       setShowTaskModal(false);
-      fetchTasks(); // 重新获取任务列表
+      fetchTasks(); // Refresh task list
       setError(null);
     } catch (err) {
       console.error('Failed to save task:', err);
-      setError('保存任务失败，请稍后重试');
+      setError('Failed to save task. Please try again later.');
     }
   };
 
   const handleDeleteTask = async (taskId) => {
-    if (window.confirm('确定要删除这个任务吗？')) {
+    if (window.confirm('Are you sure you want to delete this task?')) {
       try {
         await tasksAPI.delete(taskId);
-        fetchTasks(); // 重新获取任务列表
+        fetchTasks(); // Refresh task list
         setError(null);
       } catch (err) {
         console.error('Failed to delete task:', err);
-        setError('删除任务失败，请稍后重试');
+        setError('Failed to delete task. Please try again later.');
       }
     }
   };
@@ -133,10 +133,10 @@ const TaskBoard = () => {
   const handleStatusChange = async (taskId, newStatus) => {
     try {
       await tasksAPI.update(taskId, { status: newStatus });
-      fetchTasks(); // 重新获取任务列表
+      fetchTasks(); // Refresh task list
     } catch (err) {
       console.error('Failed to update task status:', err);
-      setError('更新任务状态失败，请稍后重试');
+      setError('Failed to update task status. Please try again later.');
     }
   };
 
@@ -154,7 +154,7 @@ const TaskBoard = () => {
         </Card.Text>
         <div className="d-flex justify-content-between align-items-center">
           <small className="text-muted">
-            👤 {task.assignedTo || '未分配'}
+            👤 {task.assignedTo || 'Unassigned'}
           </small>
           <div>
             <Button 
@@ -163,20 +163,20 @@ const TaskBoard = () => {
               className="me-1" 
               onClick={() => handleEditTask(task)}
             >
-              编辑
+              Edit
             </Button>
             <Button 
               size="sm" 
               variant="outline-danger"
               onClick={() => handleDeleteTask(task.id)}
             >
-              删除
+              Delete
             </Button>
           </div>
         </div>
         {task.dueDate && (
           <small className="text-muted d-block mt-1">
-            📅 截止日期: {new Date(task.dueDate).toLocaleDateString()}
+            📅 Due: {new Date(task.dueDate).toLocaleDateString()}
           </small>
         )}
         <div className="mt-2">
@@ -198,9 +198,9 @@ const TaskBoard = () => {
     return (
       <Container className="text-center py-5">
         <Spinner animation="border" role="status">
-          <span className="visually-hidden">加载中...</span>
+          <span className="visually-hidden">Loading...</span>
         </Spinner>
-        <p className="mt-3">正在加载任务...</p>
+        <p className="mt-3">Loading tasks...</p>
       </Container>
     );
   }
@@ -209,12 +209,12 @@ const TaskBoard = () => {
     <Container fluid>
       <Row className="mb-4">
         <Col>
-          <h2>📋 任务看板</h2>
-          <p className="text-muted">管理你的项目任务，支持完整的增删改查操作</p>
+          <h2>📋 Task Board</h2>
+          <p className="text-muted">Manage your project tasks with complete CRUD operations</p>
         </Col>
         <Col xs="auto">
           <Button variant="primary" onClick={handleCreateTask}>
-            ➕ 添加任务
+            ➕ Add Task
           </Button>
         </Col>
       </Row>
@@ -232,7 +232,7 @@ const TaskBoard = () => {
               <Card.Header className="bg-light">
                 <h5 className="mb-0">{column}</h5>
                 <small className="text-muted">
-                  {groupedTasks[column]?.length || 0} 个任务
+                  {groupedTasks[column]?.length || 0} tasks
                 </small>
               </Card.Header>
               <Card.Body>
@@ -244,7 +244,7 @@ const TaskBoard = () => {
                     className="w-100"
                     onClick={handleCreateTask}
                   >
-                    ➕ 添加任务
+                    ➕ Add Task
                   </Button>
                 )}
               </Card.Body>
@@ -253,59 +253,59 @@ const TaskBoard = () => {
         ))}
       </Row>
 
-      {/* 任务模态框 */}
+      {/* Task Modal */}
       <Modal show={showTaskModal} onHide={() => setShowTaskModal(false)} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>
-            {selectedTask ? '✏️ 编辑任务' : '➕ 创建新任务'}
+            {selectedTask ? '✏️ Edit Task' : '➕ Create New Task'}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3">
-              <Form.Label>任务标题 *</Form.Label>
+              <Form.Label>Task Title *</Form.Label>
               <Form.Control
                 type="text"
                 value={taskForm.title}
                 onChange={(e) => setTaskForm(prev => ({ ...prev, title: e.target.value }))}
-                placeholder="输入任务标题"
+                placeholder="Enter task title"
               />
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>描述 *</Form.Label>
+              <Form.Label>Description *</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
                 value={taskForm.description}
                 onChange={(e) => setTaskForm(prev => ({ ...prev, description: e.target.value }))}
-                placeholder="描述任务内容..."
+                placeholder="Describe the task..."
               />
             </Form.Group>
 
             <Row>
               <Col md={6}>
                 <Form.Group className="mb-3">
-                  <Form.Label>优先级</Form.Label>
+                  <Form.Label>Priority</Form.Label>
                   <Form.Select
                     value={taskForm.priority}
                     onChange={(e) => setTaskForm(prev => ({ ...prev, priority: e.target.value }))}
                   >
-                    <option value="Low">低</option>
-                    <option value="Medium">中</option>
-                    <option value="High">高</option>
-                    <option value="Critical">紧急</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                    <option value="Critical">Critical</option>
                   </Form.Select>
                 </Form.Group>
               </Col>
               <Col md={6}>
                 <Form.Group className="mb-3">
-                  <Form.Label>分配给</Form.Label>
+                  <Form.Label>Assigned To</Form.Label>
                   <Form.Control
                     type="text"
                     value={taskForm.assignedTo}
                     onChange={(e) => setTaskForm(prev => ({ ...prev, assignedTo: e.target.value }))}
-                    placeholder="输入负责人姓名"
+                    placeholder="Enter assignee name"
                   />
                 </Form.Group>
               </Col>
@@ -314,7 +314,7 @@ const TaskBoard = () => {
             <Row>
               <Col md={6}>
                 <Form.Group className="mb-3">
-                  <Form.Label>状态</Form.Label>
+                  <Form.Label>Status</Form.Label>
                   <Form.Select
                     value={taskForm.status}
                     onChange={(e) => setTaskForm(prev => ({ ...prev, status: e.target.value }))}
@@ -327,7 +327,7 @@ const TaskBoard = () => {
               </Col>
               <Col md={6}>
                 <Form.Group className="mb-3">
-                  <Form.Label>截止日期</Form.Label>
+                  <Form.Label>Due Date</Form.Label>
                   <Form.Control
                     type="date"
                     value={taskForm.dueDate}
@@ -340,10 +340,10 @@ const TaskBoard = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowTaskModal(false)}>
-            取消
+            Cancel
           </Button>
           <Button variant="primary" onClick={handleSaveTask}>
-            {selectedTask ? '更新任务' : '创建任务'}
+            {selectedTask ? 'Update Task' : 'Create Task'}
           </Button>
         </Modal.Footer>
       </Modal>

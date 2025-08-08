@@ -17,40 +17,40 @@ const Navigation = () => {
               to="/" 
               active={location.pathname === '/'}
             >
-              🏠 首页
+              🏠 Home
             </Nav.Link>
             <Nav.Link 
               as={Link} 
               to="/assets" 
               active={location.pathname === '/assets'}
             >
-              🎨 资源管理
+              🎨 Assets
             </Nav.Link>
             <Nav.Link 
               as={Link} 
               to="/tasks" 
               active={location.pathname === '/tasks'}
             >
-              📋 任务看板
+              📋 Tasks
             </Nav.Link>
             <Nav.Link 
               as={Link} 
               to="/team" 
               active={location.pathname === '/team'}
             >
-              👥 团队成员
+              👥 Team
             </Nav.Link>
             <Nav.Link 
               as={Link} 
               to="/versions" 
               active={location.pathname === '/versions'}
             >
-              📦 版本管理
+              📦 Versions
             </Nav.Link>
           </Nav>
           <Nav>
             <Button variant="outline-light" size="sm">
-              🔄 刷新
+              🔄 Refresh
             </Button>
           </Nav>
         </Navbar.Collapse>

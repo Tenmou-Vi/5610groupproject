@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// In-memory data storage for Iteration 2
+// In-memory data storage
 let tasks = [
   {
     id: '1',
@@ -73,14 +73,13 @@ app.get('/health', (req, res) => {
     status: 'OK', 
     message: 'Indie Game Hub API is running!',
     timestamp: new Date().toISOString(),
-    database: 'In-memory',
-    iteration: '2'
+    database: 'In-memory'
   });
 });
 
 // Basic route
 app.get('/', (req, res) => {
-  res.json({ message: 'Indie Game Hub API is running!', iteration: '2' });
+  res.json({ message: 'Indie Game Hub API is running!' });
 });
 
 // ===== TASKS API - Full CRUD Operations =====
@@ -320,7 +319,7 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`🏥 Health check available at: http://localhost:${PORT}/health`);
   console.log('💾 Using in-memory database - no external database required!');
-  console.log('📝 Iteration 2: Full CRUD operations implemented!');
+  console.log('📝 Full CRUD operations implemented!');
   console.log('📊 Available endpoints:');
   console.log('   GET    /api/tasks - Get all tasks');
   console.log('   POST   /api/tasks - Create new task');

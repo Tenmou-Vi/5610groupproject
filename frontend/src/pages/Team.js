@@ -19,7 +19,7 @@ const Team = () => {
       setError(null);
     } catch (err) {
       console.error('Failed to fetch users:', err);
-      setError('获取团队成员失败，请稍后重试');
+      setError('Failed to fetch team members. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -29,9 +29,9 @@ const Team = () => {
     return (
       <Container className="text-center py-5">
         <Spinner animation="border" role="status">
-          <span className="visually-hidden">加载中...</span>
+          <span className="visually-hidden">Loading...</span>
         </Spinner>
-        <p className="mt-3">正在加载团队成员...</p>
+        <p className="mt-3">Loading team members...</p>
       </Container>
     );
   }
@@ -40,8 +40,8 @@ const Team = () => {
     <Container>
       <Row className="mb-4">
         <Col>
-          <h2>👥 团队成员</h2>
-          <p className="text-muted">查看项目团队的所有成员信息</p>
+          <h2>👥 Team Members</h2>
+          <p className="text-muted">View all team member information for the project</p>
         </Col>
       </Row>
 
@@ -59,17 +59,17 @@ const Team = () => {
                 <Card.Title className="d-flex justify-content-between align-items-start">
                   <span>{user.displayName}</span>
                   <Badge bg={user.online ? 'success' : 'secondary'}>
-                    {user.online ? '在线' : '离线'}
+                    {user.online ? 'Online' : 'Offline'}
                   </Badge>
                 </Card.Title>
                 <Card.Text>
-                  <strong>角色:</strong> {user.role}<br/>
-                  <strong>用户名:</strong> @{user.username}<br/>
-                  <strong>邮箱:</strong> {user.email}
+                  <strong>Role:</strong> {user.role}<br/>
+                  <strong>Username:</strong> @{user.username}<br/>
+                  <strong>Email:</strong> {user.email}
                 </Card.Text>
                 {!user.online && (
                   <small className="text-muted">
-                    最后在线: {new Date(user.lastSeen).toLocaleString()}
+                    Last seen: {new Date(user.lastSeen).toLocaleString()}
                   </small>
                 )}
               </Card.Body>
@@ -80,7 +80,7 @@ const Team = () => {
 
       {users.length === 0 && (
         <div className="text-center py-5">
-          <p className="text-muted">暂无团队成员信息</p>
+          <p className="text-muted">No team member information available</p>
         </div>
       )}
     </Container>

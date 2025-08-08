@@ -18,7 +18,7 @@ const Assets = () => {
     tags: []
   });
 
-  // 获取所有资源
+  // Fetch all assets
   const fetchAssets = async () => {
     try {
       setLoading(true);
@@ -27,13 +27,13 @@ const Assets = () => {
       setError(null);
     } catch (err) {
       console.error('Failed to fetch assets:', err);
-      setError('获取资源失败，请稍后重试');
+      setError('Failed to fetch assets. Please try again later.');
     } finally {
       setLoading(false);
     }
   };
 
-  // 组件加载时获取资源
+  // Load assets when component mounts
   useEffect(() => {
     fetchAssets();
   }, []);
@@ -107,7 +107,7 @@ const Assets = () => {
   const handleSaveAsset = async () => {
     try {
       if (!assetForm.name || !assetForm.filename || !assetForm.type) {
-        setError('名称、文件名和类型是必填项');
+        setError('Name, filename, and type are required');
         return;
       }
 
@@ -117,31 +117,31 @@ const Assets = () => {
       };
 
       if (selectedAsset) {
-        // 更新资源
+        // Update asset
         await assetsAPI.update(selectedAsset.id, assetData);
       } else {
-        // 创建新资源
+        // Create new asset
         await assetsAPI.create(assetData);
       }
 
       setShowAssetModal(false);
-      fetchAssets(); // 重新获取资源列表
+      fetchAssets(); // Refresh asset list
       setError(null);
     } catch (err) {
       console.error('Failed to save asset:', err);
-      setError('保存资源失败，请稍后重试');
+      setError('Failed to save asset. Please try again later.');
     }
   };
 
   const handleDeleteAsset = async (assetId) => {
-    if (window.confirm('确定要删除这个资源吗？')) {
+    if (window.confirm('Are you sure you want to delete this asset?')) {
       try {
         await assetsAPI.delete(assetId);
-        fetchAssets(); // 重新获取资源列表
+        fetchAssets(); // Refresh asset list
         setError(null);
       } catch (err) {
         console.error('Failed to delete asset:', err);
-        setError('删除资源失败，请稍后重试');
+        setError('Failed to delete asset. Please try again later.');
       }
     }
   };
@@ -150,9 +150,9 @@ const Assets = () => {
     return (
       <Container className="text-center py-5">
         <Spinner animation="border" role="status">
-          <span className="visually-hidden">加载中...</span>
+          <span className="visually-hidden">Loading...</span>
         </Spinner>
-        <p className="mt-3">正在加载资源...</p>
+        <p className="mt-3">Loading assets...</p>
       </Container>
     );
   }
@@ -161,12 +161,12 @@ const Assets = () => {
     <Container fluid>
       <Row className="mb-4">
         <Col>
-          <h2>🎨 资源管理</h2>
-          <p className="text-muted">管理游戏项目的所有资源文件，支持完整的增删改查操作</p>
+          <h2>🎨 Asset Management</h2>
+          <p className="text-muted">Manage all resource files for your game project with complete CRUD operations</p>
         </Col>
         <Col xs="auto">
           <Button variant="primary" onClick={handleCreateAsset}>
-            ➕ 添加资源
+            ➕ Add Asset
           </Button>
         </Col>
       </Row>
@@ -177,13 +177,13 @@ const Assets = () => {
         </Alert>
       )}
 
-      {/* 资源统计卡片 */}
+      {/* Asset Statistics Cards */}
       <Row className="mb-4">
         <Col md={3}>
           <Card className="text-center">
             <Card.Body>
               <h4>{assets.length}</h4>
-              <p className="text-muted mb-0">总资源数</p>
+              <p className="text-muted mb-0">Total Assets</p>
             </Card.Body>
           </Card>
         </Col>
@@ -191,7 +191,7 @@ const Assets = () => {
           <Card className="text-center">
             <Card.Body>
               <h4>{assets.filter(a => a.type === 'image').length}</h4>
-              <p className="text-muted mb-0">图片资源</p>
+              <p className="text-muted mb-0">Image Assets</p>
             </Card.Body>
           </Card>
         </Col>
@@ -199,7 +199,7 @@ const Assets = () => {
           <Card className="text-center">
             <Card.Body>
               <h4>{assets.filter(a => a.type === 'audio').length}</h4>
-              <p className="text-muted mb-0">音频资源</p>
+              <p className="text-muted mb-0">Audio Assets</p>
             </Card.Body>
           </Card>
         </Col>
@@ -207,33 +207,33 @@ const Assets = () => {
           <Card className="text-center">
             <Card.Body>
               <h4>{formatFileSize(assets.reduce((sum, a) => sum + (a.size || 0), 0))}</h4>
-              <p className="text-muted mb-0">总大小</p>
+              <p className="text-muted mb-0">Total Size</p>
             </Card.Body>
           </Card>
         </Col>
       </Row>
 
-      {/* 资源列表 */}
+      {/* Asset List */}
       <Card>
         <Card.Header>
-          <h5 className="mb-0">资源列表</h5>
+          <h5 className="mb-0">Asset List</h5>
         </Card.Header>
         <Card.Body>
           {assets.length === 0 ? (
             <div className="text-center py-4">
-              <p className="text-muted">暂无资源，点击"添加资源"开始创建</p>
+              <p className="text-muted">No assets yet. Click "Add Asset" to get started.</p>
             </div>
           ) : (
             <Table responsive hover>
               <thead>
                 <tr>
-                  <th>资源</th>
-                  <th>名称</th>
-                  <th>类型</th>
-                  <th>分类</th>
-                  <th>大小</th>
-                  <th>上传时间</th>
-                  <th>操作</th>
+                  <th>Asset</th>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Category</th>
+                  <th>Size</th>
+                  <th>Upload Date</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -268,14 +268,14 @@ const Assets = () => {
                         className="me-1"
                         onClick={() => handleEditAsset(asset)}
                       >
-                        编辑
+                        Edit
                       </Button>
                       <Button 
                         size="sm" 
                         variant="outline-danger"
                         onClick={() => handleDeleteAsset(asset.id)}
                       >
-                        删除
+                        Delete
                       </Button>
                     </td>
                   </tr>
@@ -286,11 +286,11 @@ const Assets = () => {
         </Card.Body>
       </Card>
 
-      {/* 资源模态框 */}
+      {/* Asset Modal */}
       <Modal show={showAssetModal} onHide={() => setShowAssetModal(false)} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>
-            {selectedAsset ? '✏️ 编辑资源' : '➕ 添加新资源'}
+            {selectedAsset ? '✏️ Edit Asset' : '➕ Add New Asset'}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -298,23 +298,23 @@ const Assets = () => {
             <Row>
               <Col md={6}>
                 <Form.Group className="mb-3">
-                  <Form.Label>资源名称 *</Form.Label>
+                  <Form.Label>Asset Name *</Form.Label>
                   <Form.Control
                     type="text"
                     value={assetForm.name}
                     onChange={(e) => setAssetForm(prev => ({ ...prev, name: e.target.value }))}
-                    placeholder="输入资源名称"
+                    placeholder="Enter asset name"
                   />
                 </Form.Group>
               </Col>
               <Col md={6}>
                 <Form.Group className="mb-3">
-                  <Form.Label>文件名 *</Form.Label>
+                  <Form.Label>Filename *</Form.Label>
                   <Form.Control
                     type="text"
                     value={assetForm.filename}
                     onChange={(e) => setAssetForm(prev => ({ ...prev, filename: e.target.value }))}
-                    placeholder="例如: hero_sprite.png"
+                    placeholder="e.g., hero_sprite.png"
                   />
                 </Form.Group>
               </Col>
@@ -323,59 +323,59 @@ const Assets = () => {
             <Row>
               <Col md={6}>
                 <Form.Group className="mb-3">
-                  <Form.Label>资源类型 *</Form.Label>
+                  <Form.Label>Asset Type *</Form.Label>
                   <Form.Select
                     value={assetForm.type}
                     onChange={(e) => setAssetForm(prev => ({ ...prev, type: e.target.value }))}
                   >
-                    <option value="image">图片 (Image)</option>
-                    <option value="audio">音频 (Audio)</option>
-                    <option value="video">视频 (Video)</option>
-                    <option value="document">文档 (Document)</option>
-                    <option value="other">其他 (Other)</option>
+                    <option value="image">Image</option>
+                    <option value="audio">Audio</option>
+                    <option value="video">Video</option>
+                    <option value="document">Document</option>
+                    <option value="other">Other</option>
                   </Form.Select>
                 </Form.Group>
               </Col>
               <Col md={6}>
                 <Form.Group className="mb-3">
-                  <Form.Label>分类</Form.Label>
+                  <Form.Label>Category</Form.Label>
                   <Form.Select
                     value={assetForm.category}
                     onChange={(e) => setAssetForm(prev => ({ ...prev, category: e.target.value }))}
                   >
-                    <option value="Character">角色 (Character)</option>
-                    <option value="Background">背景 (Background)</option>
-                    <option value="UI">界面 (UI)</option>
-                    <option value="Audio">音频 (Audio)</option>
-                    <option value="Other">其他 (Other)</option>
+                    <option value="Character">Character</option>
+                    <option value="Background">Background</option>
+                    <option value="UI">UI</option>
+                    <option value="Audio">Audio</option>
+                    <option value="Other">Other</option>
                   </Form.Select>
                 </Form.Group>
               </Col>
             </Row>
 
             <Form.Group className="mb-3">
-              <Form.Label>文件大小 (字节)</Form.Label>
+              <Form.Label>File Size (bytes)</Form.Label>
               <Form.Control
                 type="number"
                 value={assetForm.size}
                 onChange={(e) => setAssetForm(prev => ({ ...prev, size: e.target.value }))}
-                placeholder="例如: 1024"
+                placeholder="e.g., 1024"
               />
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>描述</Form.Label>
+              <Form.Label>Description</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
                 value={assetForm.description}
                 onChange={(e) => setAssetForm(prev => ({ ...prev, description: e.target.value }))}
-                placeholder="描述这个资源的用途..."
+                placeholder="Describe the purpose of this asset..."
               />
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>标签 (用逗号分隔)</Form.Label>
+              <Form.Label>Tags (comma separated)</Form.Label>
               <Form.Control
                 type="text"
                 value={Array.isArray(assetForm.tags) ? assetForm.tags.join(', ') : ''}
@@ -383,17 +383,17 @@ const Assets = () => {
                   ...prev, 
                   tags: e.target.value.split(',').map(tag => tag.trim()).filter(tag => tag)
                 }))}
-                placeholder="例如: player, sprite, 32x32"
+                placeholder="e.g., player, sprite, 32x32"
               />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowAssetModal(false)}>
-            取消
+            Cancel
           </Button>
           <Button variant="primary" onClick={handleSaveAsset}>
-            {selectedAsset ? '更新资源' : '添加资源'}
+            {selectedAsset ? 'Update Asset' : 'Add Asset'}
           </Button>
         </Modal.Footer>
       </Modal>

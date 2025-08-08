@@ -19,7 +19,7 @@ const Versions = () => {
       setError(null);
     } catch (err) {
       console.error('Failed to fetch versions:', err);
-      setError('获取版本信息失败，请稍后重试');
+      setError('Failed to fetch version information. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -29,9 +29,9 @@ const Versions = () => {
     return (
       <Container className="text-center py-5">
         <Spinner animation="border" role="status">
-          <span className="visually-hidden">加载中...</span>
+          <span className="visually-hidden">Loading...</span>
         </Spinner>
-        <p className="mt-3">正在加载版本信息...</p>
+        <p className="mt-3">Loading version information...</p>
       </Container>
     );
   }
@@ -40,8 +40,8 @@ const Versions = () => {
     <Container>
       <Row className="mb-4">
         <Col>
-          <h2>📦 版本管理</h2>
-          <p className="text-muted">查看项目的所有版本和发布记录</p>
+          <h2>📦 Version Management</h2>
+          <p className="text-muted">View all versions and release records for the project</p>
         </Col>
       </Row>
 
@@ -64,18 +64,18 @@ const Versions = () => {
                 <Row>
                   <Col md={6}>
                     <p className="mb-1">
-                      <strong>创建者:</strong> {version.creator}
+                      <strong>Creator:</strong> {version.creator}
                     </p>
                     <p className="mb-1">
-                      <strong>包含资源:</strong> {version.assets.length} 个
+                      <strong>Included Assets:</strong> {version.assets.length} assets
                     </p>
                   </Col>
                   <Col md={6}>
                     <p className="mb-1">
-                      <strong>完成任务:</strong> {version.tasks.length} 个
+                      <strong>Completed Tasks:</strong> {version.tasks.length} tasks
                     </p>
                     <p className="mb-1">
-                      <strong>创建时间:</strong> {new Date(version.createdAt).toLocaleString()}
+                      <strong>Created:</strong> {new Date(version.createdAt).toLocaleString()}
                     </p>
                   </Col>
                 </Row>
@@ -87,7 +87,7 @@ const Versions = () => {
 
       {versions.length === 0 && (
         <div className="text-center py-5">
-          <p className="text-muted">暂无版本信息</p>
+          <p className="text-muted">No version information available</p>
         </div>
       )}
     </Container>

@@ -35,7 +35,7 @@ const Home = () => {
       setError(null);
     } catch (err) {
       console.error('Failed to fetch stats:', err);
-      setError('获取统计数据失败，请稍后重试');
+      setError('Failed to fetch statistics. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -45,9 +45,9 @@ const Home = () => {
     return (
       <Container className="text-center py-5">
         <Spinner animation="border" role="status">
-          <span className="visually-hidden">加载中...</span>
+          <span className="visually-hidden">Loading...</span>
         </Spinner>
-        <p className="mt-3">正在加载数据...</p>
+        <p className="mt-3">Loading data...</p>
       </Container>
     );
   }
@@ -62,10 +62,10 @@ const Home = () => {
 
       <div className="hero-section bg-primary text-white p-5 mb-4 rounded">
         <h1 className="display-4">🎮 Indie Game Hub</h1>
-        <p className="lead">独立游戏开发团队的协作平台</p>
-        <p className="mb-4">Iteration 2: 完整的 CRUD 操作已实现！</p>
+        <p className="lead">Collaborative platform for indie game development teams</p>
+        <p className="mb-4">Complete CRUD operations implemented!</p>
         <Button variant="light" size="lg" href="/tasks">
-          开始使用
+          Get Started
         </Button>
       </div>
       
@@ -74,7 +74,7 @@ const Home = () => {
           <Card className="text-center mb-3">
             <Card.Body>
               <h3 className="text-primary">{stats.assets}</h3>
-              <p>游戏资源</p>
+              <p>Game Assets</p>
             </Card.Body>
           </Card>
         </Col>
@@ -82,7 +82,7 @@ const Home = () => {
           <Card className="text-center mb-3">
             <Card.Body>
               <h3 className="text-success">{stats.tasks}</h3>
-              <p>活跃任务</p>
+              <p>Active Tasks</p>
             </Card.Body>
           </Card>
         </Col>
@@ -90,7 +90,7 @@ const Home = () => {
           <Card className="text-center mb-3">
             <Card.Body>
               <h3 className="text-info">{stats.users}</h3>
-              <p>团队成员</p>
+              <p>Team Members</p>
             </Card.Body>
           </Card>
         </Col>
@@ -98,7 +98,7 @@ const Home = () => {
           <Card className="text-center mb-3">
             <Card.Body>
               <h3 className="text-warning">{stats.versions}</h3>
-              <p>游戏版本</p>
+              <p>Game Versions</p>
             </Card.Body>
           </Card>
         </Col>
@@ -108,16 +108,16 @@ const Home = () => {
         <Col md={6}>
           <Card>
             <Card.Header>
-              <h5>✨ 新功能 (Iteration 2)</h5>
+              <h5>✨ New Features</h5>
             </Card.Header>
             <Card.Body>
               <ul>
-                <li>✅ 完整的 CRUD 操作</li>
-                <li>✅ 任务创建、编辑、删除</li>
-                <li>✅ 资源管理功能</li>
-                <li>✅ 实时数据更新</li>
-                <li>✅ 错误处理和用户反馈</li>
-                <li>✅ 响应式设计</li>
+                <li>✅ Complete CRUD operations</li>
+                <li>✅ Task creation, editing, deletion</li>
+                <li>✅ Asset management functionality</li>
+                <li>✅ Real-time data updates</li>
+                <li>✅ Error handling and user feedback</li>
+                <li>✅ Responsive design</li>
               </ul>
             </Card.Body>
           </Card>
@@ -125,19 +125,19 @@ const Home = () => {
         <Col md={6}>
           <Card>
             <Card.Header>
-              <h5>🚀 快速开始</h5>
+              <h5>🚀 Quick Start</h5>
             </Card.Header>
             <Card.Body>
-              <p>点击下面的按钮开始使用各项功能：</p>
+              <p>Click the buttons below to start using the features:</p>
               <div className="d-grid gap-2">
                 <Button variant="primary" href="/tasks">
-                  📋 管理任务
+                  📋 Manage Tasks
                 </Button>
                 <Button variant="success" href="/assets">
-                  🎨 管理资源
+                  🎨 Manage Assets
                 </Button>
                 <Button variant="info" href="/team">
-                  👥 查看团队
+                  👥 View Team
                 </Button>
               </div>
             </Card.Body>
