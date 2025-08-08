@@ -8,10 +8,6 @@ A collaborative platform designed for indie game development teams to manage ass
 - **Backend API**: https://indie-game-hub-backend-346389979835.us-central1.run.app
 - **GitHub Repository**: https://github.com/Tenmou-Vi/5610groupproject
 
-### Alternative Deployment Options
-- **Netlify**: https://stalwart-lily-deb8b0.netlify.app (backup deployment)
-- **GitHub Pages**: https://tenmoutheshark.github.io/indie-game-hub (static deployment)
-
 ## 📸 Application Preview
 
 **Live Application**: Visit https://indie-game-hub-2024.uc.r.appspot.com to see the application in action.
@@ -23,8 +19,6 @@ A collaborative platform designed for indie game development teams to manage ass
 - **Team Collaboration**: Member management with status tracking
 - **Version Control**: Release milestone management
 
-*Screenshots and demo video available upon request for presentation purposes.*
-
 ## 🚀 Technology Stack
 
 ### Frontend
@@ -32,83 +26,50 @@ A collaborative platform designed for indie game development teams to manage ass
 - **React Bootstrap** (v2.10.10) - UI component library
 - **React Router DOM** (v7.7.1) - Client-side routing
 - **Axios** (v1.11.0) - HTTP client for API calls
-- **Socket.io Client** (v4.8.1) - Real-time communication (prepared)
 
 ### Backend
 - **Node.js** + **Express** (v4.18.2) - Server framework
 - **CORS** (v2.8.5) - Cross-origin resource sharing
-- **Socket.io** (v4.8.1) - Real-time communication (prepared)
 - **In-memory Database** - Simplified data storage for deployment stability
 
 ### Deployment & DevOps
 - **Frontend**: Google Cloud App Engine (Node.js runtime)
 - **Backend**: Google Cloud Run (containerized deployment)
-- **Alternative Deployments**: Netlify, GitHub Pages
 - **Version Control**: Git + GitHub with tagged releases
 
-## 📋 Iteration 2 Requirements Fulfilled
+## 📋 Project Progress Summary
 
-### ✅ Complete CRUD Operations
-- **CREATE**: POST endpoints for adding new tasks and assets
-- **READ**: GET endpoints for retrieving all data
-- **UPDATE**: PUT endpoints for modifying existing data
-- **DELETE**: DELETE endpoints for removing data
+### Part 1: Initial Setup and Basic Structure
+- **Project Architecture**: Designed and implemented full MERN stack structure
+- **Backend Development**: Created Express.js API with RESTful endpoints
+- **Frontend Development**: Built React application with Bootstrap UI
+- **Database Design**: Designed data models for assets, tasks, users, and versions
+- **UI/UX Design**: Implemented responsive Bootstrap interface with custom styling
+- **DevOps Setup**: Configured Docker containerization and cloud deployment pipeline
 
-### ✅ Enhanced User Interface
-- **English Interface**: All UI text converted to English
-- **Improved UX**: Better error handling and user feedback
-- **Real-time Updates**: Automatic data refresh after operations
-- **Form Validation**: Client-side validation for all inputs
+### Part 2: Deployment and Infrastructure
+- **Google Cloud Run**: Successfully deployed backend with containerization
+- **Google Cloud App Engine**: Deployed frontend with Node.js runtime
+- **CORS Configuration**: Proper frontend-backend integration
+- **Health Monitoring**: RESTful API architecture with health check endpoints
+- **Version Control**: Set up Git repository with proper branching and tagging
 
-### ✅ Advanced Task Management
-- **Task Creation**: Add new tasks with full details
-- **Task Editing**: Modify existing tasks inline
-- **Task Deletion**: Remove tasks with confirmation
-- **Status Management**: Drag-and-drop status updates
-- **Priority System**: Visual priority indicators
+### Part 3: Core Functionality Implementation
+- **RESTful API**: Implemented GET endpoints for all data types
+- **UI Routes**: Created 5 distinct routes: `/`, `/assets`, `/tasks`, `/team`, `/versions`
+- **Bootstrap Components**: Utilized Badge, Alert, Fade, ListGroup, Spinner components
+- **Responsive Design**: Mobile-first approach with custom gaming theme
+- **Data Display**: Organized presentation of assets, tasks, team members, and versions
 
-### ✅ Asset Management System
-- **Asset Creation**: Add new game assets with metadata
-- **Asset Editing**: Update asset information
-- **Asset Deletion**: Remove assets with confirmation
-- **File Type Support**: Images, audio, video, documents
-- **Category System**: Organized asset categorization
-
-## 📋 Iteration 1 Requirements Fulfilled
-
-### ✅ Full-Stack Web Application
-- **Frontend**: React.js with browser-based UI
-- **Backend**: Node.js + Express.js API server
-- **Database**: In-memory structured data storage
-- **Deployment**: Google Cloud Platform (App Engine + Cloud Run)
-
-### ✅ 2+ CRUD Operations (Complete Implementation)
-1. **Assets CRUD**: Full CRUD operations for game asset library
-2. **Tasks CRUD**: Complete task management with status tracking
-3. **Users CRUD**: Team member information management
-4. **Versions CRUD**: Version control data management
-
-### ✅ 3+ UI Routes
-1. **Dashboard** (`/`) - Project overview and statistics
-2. **Assets** (`/assets`) - Game asset management interface
-3. **Task Board** (`/tasks`) - Kanban-style task tracking
-4. **Team** (`/team`) - Member management and collaboration
-5. **Versions** (`/versions`) - Version control and releases
-
-### ✅ Bootstrap Components (Not in Demo)
-- **Badge**: Status indicators and priority levels
-- **Alert**: Success/error notification system
-- **Fade**: Smooth transitions and loading states
-- **ListGroup**: Organized data presentation
-- **Spinner**: Loading indicators during API calls
-- **Modal**: Task and asset creation/editing forms
-- **Table**: Structured data display for assets
-
-### ✅ Different Layout/Design
-- Custom gaming-themed dark interface
-- Professional indie game development focus
-- Responsive mobile-first design approach
-- Distinct from demo application appearance
+### Part 4: Complete CRUD Operations (Iteration 2)
+- **Full CRUD API**: Implemented CREATE, READ, UPDATE, DELETE for tasks and assets
+- **Enhanced Frontend**: Added complete CRUD operations in React components
+- **English Interface**: Converted all UI text to English for better accessibility
+- **Form Validation**: Implemented client-side validation for all inputs
+- **Error Handling**: Added comprehensive error handling and user feedback
+- **Real-time Updates**: Automatic data refresh after CRUD operations
+- **Modal Forms**: Created reusable modal components for task and asset management
+- **API Service Layer**: Organized API calls with proper error handling
 
 ## 📋 Features Implemented
 
@@ -132,7 +93,6 @@ A collaborative platform designed for indie game development teams to manage ass
 - Team member status (online/offline)
 - Member roles and contact information
 - Last activity tracking
-- Real-time status updates (prepared)
 
 ### 4. Version Management (`/versions`)
 - Game version tracking and history
@@ -204,8 +164,6 @@ indie-game-hub/
 │   ├── build/              # Production build output
 │   └── public/             # Static assets and _redirects
 ├── docs/                   # Documentation and resources
-├── ITERATION_1_SUMMARY.md  # Detailed progress summary
-├── PIAZZA_SUBMISSION.md    # Piazza submission content
 └── README.md               # Project documentation
 ```
 
@@ -252,23 +210,6 @@ npm run build
 gcloud app deploy --quiet
 ```
 
-### Alternative Frontend Deployments
-
-#### Netlify (Automatic)
-```bash
-# Connected to GitHub - automatically deploys on push
-# Manual deployment:
-cd frontend
-npm run build
-# Drag build folder to https://app.netlify.com/drop
-```
-
-#### GitHub Pages
-```bash
-cd frontend
-npm run deploy
-```
-
 ## 📊 Bootstrap UI Components
 
 The application utilizes multiple Bootstrap components not featured in the demo:
@@ -301,7 +242,6 @@ The application utilizes multiple Bootstrap components not featured in the demo:
 - **React Router DOM** - Declarative routing for React applications
 
 ### Additional Features
-- **Socket.io Client** - Prepared for real-time collaboration features
 - **Bootstrap** - CSS framework for responsive design
 
 ## 👤 Team Contributions
@@ -343,55 +283,47 @@ The application utilizes multiple Bootstrap components not featured in the demo:
 - `iteration-1` - Complete frontend and backend deployment with basic CRUD foundation
 - `iteration-2` - Full CRUD operations with enhanced UI and English interface
 
-## 🎯 Iteration 2 Requirements Compliance
+## 🎯 Requirements Compliance
 
 ### ✅ Completed Requirements
 
-1. **✅ Complete CRUD Operations**
+1. **✅ Full-stack Web Application**
+   - Browser-based React frontend
+   - Express.js backend with database (in-memory)
+
+2. **✅ Complete CRUD Operations**
    - **CREATE**: POST endpoints for tasks and assets
    - **READ**: GET endpoints for all data types
    - **UPDATE**: PUT endpoints for modifying data
    - **DELETE**: DELETE endpoints with confirmation
 
-2. **✅ Enhanced User Interface**
-   - **English Interface**: All text converted to English
-   - **Improved UX**: Better error handling and feedback
-   - **Form Validation**: Client-side validation implemented
-   - **Loading States**: Visual feedback during operations
+3. **✅ UI Routes (3+ required)**
+   - 5 distinct routes implemented: `/`, `/assets`, `/tasks`, `/team`, `/versions`
 
-3. **✅ Advanced Task Management**
-   - **Task Creation**: Full task creation with all fields
-   - **Task Editing**: Inline task modification
-   - **Task Deletion**: Confirmed task removal
-   - **Status Updates**: Real-time status changes
+4. **✅ Bootstrap Component (not in demo)**
+   - Badge component for status indicators
+   - Alert component for error handling
+   - Modal component for forms
+   - Fade transitions for smooth UX
 
-4. **✅ Asset Management System**
-   - **Asset Creation**: Complete asset creation workflow
-   - **Asset Editing**: Full asset modification capabilities
-   - **Asset Deletion**: Confirmed asset removal
-   - **File Type Support**: Multiple file type categories
+5. **✅ Different Layout/Design**
+   - Custom gaming-themed design
+   - Unique color scheme and branding
+   - Card-based layout system
 
-5. **✅ API Enhancement**
-   - **Error Handling**: Comprehensive error responses
-   - **Validation**: Input validation on server side
-   - **Consistent Responses**: Standardized API response format
-   - **Health Monitoring**: Enhanced health check endpoint
+6. **✅ Third-party React Library**
+   - React Bootstrap for comprehensive UI components
+   - Axios for enhanced HTTP client functionality
 
-## 📈 Future Development Plans
+7. **✅ Google Cloud Deployment**
+   - Backend deployed on Google Cloud Run
+   - Frontend deployed on Google Cloud App Engine
+   - Both services operational and communicating
 
-### Iteration 3 Goals
-- [ ] User authentication and authorization
-- [ ] File upload functionality with cloud storage
-- [ ] Real-time collaboration features using Socket.io
-- [ ] MongoDB integration for persistent data storage
-- [ ] Advanced search and filtering capabilities
-- [ ] Project template system
-
-### Long-term Goals
-- [ ] Mobile application optimization
-- [ ] Performance optimization and caching strategies
-- [ ] Advanced analytics and reporting
-- [ ] Integration with external game development tools
+8. **✅ Version Control**
+   - Git repository with meaningful commits
+   - Tagged releases for iterations
+   - Collaborative workflow setup
 
 ## 🔧 Technical Notes
 
@@ -441,9 +373,6 @@ All API endpoints return JSON responses with consistent structure and appropriat
 - **GitHub Repository**: https://github.com/Tenmou-Vi/5610groupproject
 - **Primary Frontend**: https://indie-game-hub-2024.uc.r.appspot.com
 - **Backend API**: https://indie-game-hub-backend-346389979835.us-central1.run.app
-- **Alternative Deployments**: 
-  - Netlify: https://stalwart-lily-deb8b0.netlify.app
-  - GitHub Pages: https://tenmoutheshark.github.io/indie-game-hub
 
 ## 📊 Deployment Status
 
@@ -451,24 +380,6 @@ All API endpoints return JSON responses with consistent structure and appropriat
 |---------|----------|--------|-----|
 | Frontend | Google Cloud App Engine | ✅ Operational | https://indie-game-hub-2024.uc.r.appspot.com |
 | Backend | Google Cloud Run | ✅ Operational | https://indie-game-hub-backend-346389979835.us-central1.run.app |
-| Backup Frontend | Netlify | ✅ Operational | https://stalwart-lily-deb8b0.netlify.app |
-
-## 🆕 Iteration 2 Updates
-
-### New Features Added
-- **Complete CRUD Operations**: Full create, read, update, delete functionality
-- **English Interface**: All UI text converted to English
-- **Enhanced Forms**: Modal-based creation and editing forms
-- **Real-time Updates**: Automatic data refresh after operations
-- **Improved Error Handling**: Better user feedback and error messages
-- **Form Validation**: Client-side and server-side validation
-- **Loading States**: Visual feedback during API operations
-
-### Technical Improvements
-- **API Enhancement**: Complete RESTful API with all CRUD operations
-- **Frontend Architecture**: Organized component structure with services
-- **Error Management**: Comprehensive error handling throughout the application
-- **User Experience**: Improved navigation and interaction patterns
 
 ---
 
