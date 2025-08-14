@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button, Alert, Spinner } from 'react-bootstrap';
 import { assetsAPI, tasksAPI, usersAPI, versionsAPI } from '../services/api';
+import { useAuth } from '../contexts/AuthContext';
 
 const Home = () => {
+  const { user, isAuthenticated } = useAuth();
   const [stats, setStats] = useState({
     assets: 0,
     tasks: 0,
@@ -68,10 +70,10 @@ const Home = () => {
         border: '3px solid #ff8c42'
       }}>
         <h1 className="display-3 bounce-animation" style={{color: '#ff6b35', textShadow: '3px 3px 6px rgba(0,0,0,0.2)'}}>
-          🎮 Welcome to Indie Game Hub! 🎮
+          🎮 {isAuthenticated ? `Welcome back, ${user.name}!` : 'Welcome to Indie Game Hub!'} 🎮
         </h1>
         <p className="lead" style={{color: '#ff8c42', fontSize: '1.4rem', fontWeight: '600'}}>
-          ✨ Your magical workspace for indie game development! ✨
+          ✨ {isAuthenticated ? 'Your personal game development dashboard!' : 'Your magical workspace for indie game development!'} ✨
         </p>
         <p className="mb-4" style={{color: '#ffa726', fontSize: '1.1rem'}}>
           🚀 Complete CRUD operations implemented with love! 💖

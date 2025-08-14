@@ -1,8 +1,18 @@
 /* 🎮 Indie Game Hub - Cute Gaming Theme */
 
+/* Import elegant fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600&display=swap');
+
 /* Global Styles */
 * {
-  font-family: 'Comic Sans MS', 'Arial', sans-serif;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+/* Elegant headings */
+h1, h2, h3, h4, h5, h6, .display-1, .display-2, .display-3, .display-4 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 body {
@@ -314,6 +324,93 @@ body::before {
   animation: bounce 2s infinite;
 }
 
+/* Google Login Button */
+.google-login-btn {
+  background: white !important;
+  color: #757575 !important;
+  border: 1px solid #dadce0 !important;
+  border-radius: 6px !important;
+  padding: 12px 24px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+  text-decoration: none !important;
+}
+
+.google-login-btn:hover {
+  background: #f8f9fa !important;
+  border-color: #dadce0 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+  color: #3c4043 !important;
+  transform: translateY(-1px);
+}
+
+.google-icon {
+  width: 18px;
+  height: 18px;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KPHBhdGggZD0iTTE3LjY0IDkuMjA0NTQ1YzAtLjYzOTI3MjctLjA1NzI3MjctMS4yNzkwOTEtLjE2NDU0NTUtMS45MDIyNzI3SDl2My41NDA5MDloNS44NDQzNjM2Yy0uMjQ1NDU0NS45MjQwOTA5LS45NDkwOTA5IDEuNzA5MDkwOS0yLjAxODczNjQgMi4yMzI3Mjc4djEuODUxODE4Mmg0LjE5ODU0NTVjMS45MDU0NTQ1LTEuNzYyMjcyNyAzLjAwNDA5MDktNC4zNjM2MzY0IDMuMDA0MDkwOS03LjY4eiIgZmlsbD0iIzQyODVGNCIvPgo8cGF0aCBkPSJNOSAxMC41YzEuNjUgMCAyLjc5Mi0uNTQgMy44Mi0xLjQ4bC00LjItMy4yNGMtMS4xNy0uNzgtMi42Ny0xLjI0LTMuNjItMS4yNC0yLjc2IDAtNS4xIDEuODMtNS45NCA0LjI4aC00LjM5djMuMjZjMi40MSA0Ljc3IDcuMjcgOC4wMSAxMy4zMyA4LjAxeiIgZmlsbD0iIzM0QTg1MyIvPgo8cGF0aCBkPSJNNC4yNyAxMC41Yy0uMjMtLjY5LS4zNi0xLjQyLS4zNi0yLjE4czAuMTMtMS40OSAwLjM2LTIuMThWMi44OEgwLjA5QTguOTYgOC45NiAwIDAgMCAwIDkuMzJhOC45NiA4Ljk2IDAgMCAwIDEuNDQgNC45NWwzLjgzLTMuMjR6IiBmaWxsPSIjRkJCQzA0Ii8+CjxwYXRoIGQ9Ik05IDMuNzhjMS41NSAwIDIuODMuNTMgMy44OCAxLjU4bDIuOTEtMi45MUMxNC4yNS45MyAxMS45MyAwIDkgMCA1LjQ1IDAgMi40OSAyLjAyIDEuNDQgNC45NWw0LjE4IDMuMjRjLjgxLTIuNDUgMy4wOC00LjI4IDUuMzgtNC4yOHoiIGZpbGw9IiNFQTQzMzUiLz4KPC9nPgo8L3N2Zz4K');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Auth Container */
+.auth-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 10px 40px rgba(255, 140, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.auth-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: #ff6b35;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.user-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: white;
+  margin-left: 12px;
+}
+
+/* Elegant typography refinements */
+.navbar-brand {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 600 !important;
+}
+
+.stats-label {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .App {
@@ -328,5 +425,10 @@ body::before {
   
   .stats-number {
     font-size: 2rem;
+  }
+  
+  .auth-container {
+    margin: 20px;
+    padding: 24px;
   }
 }

@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-// 导入组件
+// 导入组件和上下文
+import { AuthProvider } from './contexts/AuthContext';
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import Assets from './pages/Assets';
@@ -13,20 +14,22 @@ import Versions from './pages/Versions';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Navigation />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/assets" element={<Assets />} />
-            <Route path="/tasks" element={<TaskBoard />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/versions" element={<Versions />} />
-          </Routes>
-        </main>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className="App">
+          <Navigation />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/assets" element={<Assets />} />
+              <Route path="/tasks" element={<TaskBoard />} />
+              <Route path="/team" element={<Team />} />
+              <Route path="/versions" element={<Versions />} />
+            </Routes>
+          </main>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 

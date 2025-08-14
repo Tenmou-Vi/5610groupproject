@@ -1,14 +1,18 @@
 import React from 'react';
-import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import GoogleLogin from './GoogleLogin';
+import UserProfile from './UserProfile';
 
 const Navigation = () => {
   const location = useLocation();
+  const { isAuthenticated } = useAuth();
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" className="mb-4">
+    <Navbar expand="lg" className="mb-4">
       <Container>
-        <Navbar.Brand as={Link} to="/">🎮 Indie Game Hub</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">Indie Game Hub</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -48,10 +52,12 @@ const Navigation = () => {
               📦 Versions
             </Nav.Link>
           </Nav>
-          <Nav>
-            <Button variant="outline-light" size="sm">
-              🔄 Refresh
-            </Button>
+          <Nav className="d-flex align-items-center">
+            {isAuthenticated ? (
+              <UserProfile />
+            ) : (
+              <GoogleLogin />
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
