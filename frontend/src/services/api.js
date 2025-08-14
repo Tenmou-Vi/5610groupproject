@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // 配置 axios 基础 URL
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://indie-game-hub-backend-346389979835.us-central1.run.app';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
