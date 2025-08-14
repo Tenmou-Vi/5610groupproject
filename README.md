@@ -1,4 +1,4 @@
-# 🎮 Indie Game Hub - Iteration 2
+# 🎮 Indie Game Hub - Iteration 3
 
 A collaborative platform designed for indie game development teams to manage assets, track tasks, coordinate team members, and manage game versions.
 
