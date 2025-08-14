@@ -6,6 +6,16 @@ A collaborative platform designed for indie game development teams to manage ass
 
 - **Frontend Application**: https://indie-game-hub-2024.uc.r.appspot.com
 - **Backend API**: https://indie-game-hub-backend-346389979835.us-central1.run.app
+
+## 📁 Repository Structure
+
+This project has been split into separate repositories for better organization:
+
+### **Separated Repositories**:
+- **Frontend Repository**: https://github.com/Tenmou-Vi/indie-game-hub-frontend
+- **Backend Repository**: https://github.com/Tenmou-Vi/indie-game-hub-backend
+
+### **Original Combined Repository**: 
 - **GitHub Repository**: https://github.com/Tenmou-Vi/5610groupproject
 
 ## 📸 Application Preview
